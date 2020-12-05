@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 // THIS IS WHAT DATA IS IN THE galleryItem
@@ -12,9 +13,16 @@ class GalleryItem extends Component{
         imgPath: `../../${this.props.galleryItem.path}`
     }
 
+    // function to add a like
+    addLike = () => {
+        axios.put(`/gallery/like/${this.props.galleryItem.id}`)
+        .then (response => {
+            this.props.getGalleryItems();
+        })
+    }
+
     // Function to toggle selected status. Will add faded image class, display text as conditional rendering components in the jsx.
     selectImage = () =>{
-        console.log('in selectImage')
         this.setState({
             selected: !this.state.selected
         })
@@ -22,12 +30,18 @@ class GalleryItem extends Component{
 
     render(){
         return(
-            <div onClick={this.selectImage} className="gallery-item">
-                {/* Conditionally renders the text above the image if the image is clicked on. */}
-                {this.state.selected &&  <div className="gallery-image-text">{this.props.galleryItem.description}</div>}
-                
-                
-                <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={"../../" + this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
+            <div className="gallery-item-container">
+                <div onClick={this.selectImage} className="gallery-item">
+                    {/* Conditionally renders the text above the image if the image is clicked on. */}
+                    {this.state.selected &&  <div className="gallery-image-text">{this.props.galleryItem.description}</div>}
+                    
+                    
+                    <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={"../../" + this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
+                </div>
+                <br></br>
+                <button onClick={this.addLike}>Like</button>
+                <br></br>
+                <p>{this.props.galleryItem.likes} people like this! </p>
             </div>
         ) // end return
     } // end render

@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <GalleryList galleryItems={this.state.galleryItems} />
+        <GalleryList getGalleryItems={this.getGalleryItems} galleryItems={this.state.galleryItems} />
       </div>
     );
   }

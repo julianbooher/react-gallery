@@ -17,6 +17,10 @@
   font-size: large;
 }
 
+.gallery-item-container{
+  display: inline-block;
+  margin-bottom: .5em;
+}
 
 .gallery-item{
  min-width: 250px;
@@ -26,8 +30,11 @@
 }
 
 .gallery-image{
-  width: 250px;
+  width: 300px;
   height: auto;
+  margin-right: .5em;
+  margin-left: .5em;
+  margin-bottom: .2em;
 }
 .gallery-image-text{
   position: absolute;

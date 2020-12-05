@@ -11,12 +11,23 @@ class GalleryItem extends Component{
         selected: false,
         imgPath: `../../${this.props.galleryItem.path}`
     }
+
+    // Function to toggle selected status. Will add faded image class, display text as conditional rendering components in the jsx.
+    selectImage = () =>{
+        console.log('in selectImage')
+        this.setState({
+            selected: !this.state.selected
+        })
+    }
+
     render(){
         return(
-            <div className="gallery-item">
-                <div className="gallery-image-text">TEXT</div>
+            <div onClick={this.selectImage} className="gallery-item">
+                {/* Conditionally renders the text above the image if the image is clicked on. */}
+                {this.state.selected &&  <div className="gallery-image-text">{this.props.galleryItem.description}</div>}
                 
-                <img className="gallery-image" src={"../../" + this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
+                
+                <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={"../../" + this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
             </div>
         ) // end return
     } // end render

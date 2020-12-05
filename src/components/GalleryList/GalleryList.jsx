@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import GalleryItem from '../GalleryItem/GalleryItem'
 
 class GalleryList extends Component{
     render(){
         return(
-            <div>
+            <div className="gallery">
                 <h1>Gallery</h1>
-                <img src="images/Donkey.jpg"/>            
+                {this.props.galleryItems.map((galleryItem) => 
+                    <GalleryItem galleryItem={galleryItem} key={galleryItem.id} />
+                )}            
             </div>
         ) // end return
     } // end render

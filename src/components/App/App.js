@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Header from '../Header/Header'
 import GalleryList from '../GalleryList/GalleryList'
+import InputField from '../InputField/InputField'
 
 
 
@@ -37,6 +38,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <InputField />
         <GalleryList getGalleryItems={this.getGalleryItems} galleryItems={this.state.galleryItems} />
       </div>
     );

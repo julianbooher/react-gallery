@@ -20,16 +20,20 @@ class App extends Component {
   getGalleryItems = () => {
     axios.get('/gallery')
     .then ( response => {
+      console.log(response.data);
       this.setState({
         galleryItems: response.data
       })
+    })
+    .catch((error) => {
+      alert('Something bad happened');
+      console.log('Error', error)
     })
   }
 
 
 
   render() { 
-    console.log(this.state.galleryItems)
     return (
       <div className="App">
         <Header />

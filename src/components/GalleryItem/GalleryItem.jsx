@@ -36,7 +36,7 @@ class GalleryItem extends Component{
                     {this.state.selected &&  <div className="gallery-image-text">{this.props.galleryItem.description}</div>}
                     
                     
-                    <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={"../../" + this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
+                    <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
                 </div>
                 <br></br>
                 <button onClick={this.addLike}>Like</button>

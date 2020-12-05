@@ -5,17 +5,20 @@ const bodyParser = require('body-parser');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
-// // PUT Route
-// router.put('/like/:id', (req, res) => {
-//     console.log(req.params);
-//     const galleryId = req.params.id;
-//     for(const galleryItem of galleryItems) {
-//         if(galleryItem.id == galleryId) {
-//             galleryItem.likes += 1;
-//         }
-//     }
-//     res.sendStatus(200);
-// }); // END PUT Route
+// PUT Route
+router.put('/like/:id', (req, res) => {
+    console.log(req.params);
+    const galleryId = req.params.id;
+    const sqlText = `UPDATE gallery SET likes = likes + 1 WHERE id = $1;`
+    pool.query(sqlText, [galleryId])
+    .then((result) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log(`Error making database change LIKES`, error);
+        res.sendStatus(500);
+    });
+}); // END PUT Route
 
 
 // GET ROUTE

@@ -58,6 +58,7 @@
  display: inline-block;
  position: relative;
  background-color: white;
+ word-wrap: break-word;
 }
 
 .gallery-image{

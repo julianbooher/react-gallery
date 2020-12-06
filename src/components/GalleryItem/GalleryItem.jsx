@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import Swal from 'sweetalert2'
+
 
 // THIS IS WHAT DATA IS IN THE galleryItem
 // {"id":1,"path":"images/Donkey.jpg","description":"Photo of a goat taken at Glacier National Park.","likes":0}
@@ -28,15 +30,38 @@ class GalleryItem extends Component{
 
     // function to delete a photo
     deletePhoto = () => {
-        console.log('in deletePhoto')
-        axios.delete(`/gallery/${this.props.galleryItem.id}`)
-        .then (response => {
-            this.props.getGalleryItems();
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This will delete the selected photo',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Photo Deleted!',
+                    'success'
+                )
+                axios.delete(`/gallery/${this.props.galleryItem.id}`)
+                .then (response => {
+                  this.props.getGalleryItems();
+                })
+                .catch((error) => {
+                    alert('Something bad happened');
+                    console.log('Error', error)
+                })
+                // For more information about handling dismissals please visit
+                // https://sweetalert2.github.io/#handling-dismissals
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    'Your photo was not deleted',
+                    'error'
+                )
+            }
         })
-        .catch((error) => {
-            alert('Something bad happened');
-            console.log('Error', error)
-          })
     }
 
     // Function to toggle selected status. Will add faded image class, display text as conditional rendering components in the jsx.

@@ -17,6 +17,7 @@ class InputField extends Component{
     // Sets the state when text is typed into the input fields.
     handleChangeFor = (event, propertyName) => {
         console.log(this.state);
+
         this.setState({
         newGalleryItem: {
             ...this.state.newGalleryItem,
@@ -57,10 +58,15 @@ class InputField extends Component{
                     label="Photo URL" 
                     variant="outlined" 
                     type="text" 
+                    inputProps={{
+                        maxLength: 200,
+                      }}
                     value={this.state.newGalleryItem.path} 
                     onChange={(event) => this.handleChangeFor(event, 'path')} />
+
                     <br></br>
                     <br></br>
+
                     <TextField 
                     className="input-field-description-input" 
                     id="outlined-multiline-static" 
@@ -69,6 +75,9 @@ class InputField extends Component{
                     rows={4}
                     variant="outlined" 
                     type="text" 
+                    inputProps={{
+                        maxLength: 200,
+                      }}
                     value={this.state.newGalleryItem.description} 
                     onChange={(event) => this.handleChangeFor(event, 'description')} />
                     <br></br>

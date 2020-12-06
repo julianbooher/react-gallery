@@ -17,11 +17,10 @@ class App extends Component {
     this.getGalleryItems();
   }
 
-  //GET route
+  //GET route, then the galleryItems are rendered to the DOM via GalleryList
   getGalleryItems = () => {
     axios.get('/gallery')
     .then ( response => {
-      console.log(response.data);
       this.setState({
         galleryItems: response.data
       })
@@ -38,7 +37,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <InputField />
+        <InputField  getGalleryItems={this.getGalleryItems} />
         <GalleryList getGalleryItems={this.getGalleryItems} galleryItems={this.state.galleryItems} />
       </div>
     );

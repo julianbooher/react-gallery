@@ -5,9 +5,25 @@ const bodyParser = require('body-parser');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
+//POST ROUTE
+
+router.post('/', (req, res) => {
+    // Grabs the input data from the user.
+    const galleryItem = req.body;
+    const sqlText = `INSERT INTO gallery (path, description) VALUES ($1, $2);`;
+    // Running the sqlText in our database with sanitized input values.
+    pool.query(sqlText, [galleryItem.path, galleryItem.description])
+        .then((result) => {
+            res.sendStatus(201);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500); // Good server always responds
+        })
+})
+
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    console.log(req.params);
     const galleryId = req.params.id;
     const sqlText = `UPDATE gallery SET likes = likes + 1 WHERE id = $1;`
     pool.query(sqlText, [galleryId])

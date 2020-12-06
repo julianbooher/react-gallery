@@ -17,6 +17,16 @@
   font-size: large;
 }
 
+.input-field label{
+  padding-right: .5em;
+}
+.input-field input{
+  margin-top: .5em;
+}
+.input-field button{
+  margin-top: 1em;
+}
+
 .gallery-item-container{
   display: inline-block;
   margin-bottom: .5em;
@@ -40,7 +50,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
+  width: 90%;
   transform: translate(-50%, -50%);
 }
 

@@ -20,6 +20,11 @@ class GalleryItem extends Component{
         })
     }
 
+    // function to add a like
+    deletePhoto = () => {
+        console.log('in deletePhoto')
+    }
+
     // Function to toggle selected status. Will add faded image class, display text as conditional rendering components in the jsx.
     selectImage = () =>{
         this.setState({
@@ -41,6 +46,7 @@ class GalleryItem extends Component{
                 <button onClick={this.addLike}>Like</button>
                 <br></br>
                 <p>{this.props.galleryItem.likes} people like this! </p>
+                <button onClick={this.deletePhoto}> Delete</button>
             </div>
         ) // end return
     } // end render

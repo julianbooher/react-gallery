@@ -26,6 +26,13 @@ class InputField extends Component{
         event.preventDefault();
         console.log('inside addPhoto');
         axios.post('/gallery', this.state.newGalleryItem)
+        .then (response => {
+            this.props.getGalleryItems();
+        })
+        .catch((error) => {
+            alert('Something bad happened');
+            console.log('Error', error)
+          })
         // Reset the state so the input fields clear.
         this.setState({
             newGalleryItem:{

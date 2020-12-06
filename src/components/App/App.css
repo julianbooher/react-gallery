@@ -1,5 +1,9 @@
+/* --------- APP STYLING --------- */
+
 .App {
   text-align: center;
+  Font-Family: 'Merriweather', Serif;
+
 }
 
 .App-header {
@@ -17,19 +21,36 @@
   font-size: large;
 }
 
-.input-field label{
-  padding-right: .5em;
-}
-.input-field input{
-  margin-top: .5em;
-}
+/* --------- INPUT FIELD STYLING --------- */
+
+
 .input-field button{
   margin-top: 1em;
+}
+.input-field-url-input{
+  width: 50em;
+  min-width: 50%;
+  max-width: 95%;
+}
+.input-field-description-input{
+  width: 20em;
+  min-width: 50%;
+  max-width: 95%;
+}
+
+/* --------- GALLERY STYLING --------- */
+
+.gallery h1{
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  margin-bottom: 1em;
 }
 
 .gallery-item-container{
   display: inline-block;
-  margin-bottom: .5em;
+  margin-bottom: 1.5em;
 }
 
 .gallery-item{

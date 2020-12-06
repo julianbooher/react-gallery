@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import SendIcon from '@material-ui/icons/Send';
+
 
 
 class InputField extends Component{
@@ -47,14 +51,33 @@ class InputField extends Component{
             <div className="input-field">
                 <h2>Submit a new photo!</h2>
                 <form onSubmit={this.addPhoto}>
-                <label>Photo URL:</label>
-                <input type="text" value={this.state.newGalleryItem.path} onChange={(event) => this.handleChangeFor(event, 'path')} />
-                <br></br>
-                <label>Description:</label>
-                <input type="text" value={this.state.newGalleryItem.description} onChange={(event) => this.handleChangeFor(event, 'description')} />
-                <br></br>
-                <button type="submit">Submit Photo</button>
-
+                    <TextField 
+                    className="input-field-url-input" 
+                    id="outlined-basic" 
+                    label="Photo URL" 
+                    variant="outlined" 
+                    type="text" 
+                    value={this.state.newGalleryItem.path} 
+                    onChange={(event) => this.handleChangeFor(event, 'path')} />
+                    <br></br>
+                    <br></br>
+                    <TextField 
+                    className="input-field-description-input" 
+                    id="outlined-multiline-static" 
+                    label="Photo Description" 
+                    multiline
+                    rows={4}
+                    variant="outlined" 
+                    type="text" 
+                    value={this.state.newGalleryItem.description} 
+                    onChange={(event) => this.handleChangeFor(event, 'description')} />
+                    <br></br>
+                    <Button 
+                    color="primary"
+                    variant="outlined"
+                    startIcon={<SendIcon/>}
+                    type="submit">Submit Photo
+                    </Button>
                 </form>
             </div>
         ) // end return

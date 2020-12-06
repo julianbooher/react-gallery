@@ -40,12 +40,13 @@
 
 /* --------- GALLERY STYLING --------- */
 
-.gallery h1{
+.gallery-header{
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  padding-top: .5em;
-  padding-bottom: .5em;
-  margin-bottom: 1em;
+  padding-top: .25em;
+  padding-bottom: .25em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .gallery-item-container{

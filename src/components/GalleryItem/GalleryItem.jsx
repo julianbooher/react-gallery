@@ -87,7 +87,14 @@ class GalleryItem extends Component{
                     startIcon={<ThumbUpAltIcon />}
                     onClick={this.addLike}>Like this photo!</Button>
                 <br></br>
-                <p>{this.props.galleryItem.likes} people like this! </p>
+                <p>{this.props.galleryItem.likes} 
+                {this.props.galleryItem.likes === 1 ? 
+                " person likes " :
+                " people like "
+                
+                }
+                
+                this! </p>
                 <Button 
                     variant="outlined" 
                     color="secondary" 

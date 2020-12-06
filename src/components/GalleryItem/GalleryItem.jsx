@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 // THIS IS WHAT DATA IS IN THE galleryItem
 // {"id":1,"path":"images/Donkey.jpg","description":"Photo of a goat taken at Glacier National Park.","likes":0}
@@ -56,10 +57,16 @@ class GalleryItem extends Component{
                     <img className={`gallery-image ${this.state.selected && "faded-image"}`} src={this.props.galleryItem.path} alt={this.props.galleryItem.description}/>
                 </div>
                 <br></br>
-                <Button color="primary" onClick={this.addLike}>Like this photo!</Button>
+                <Button 
+                    color="primary" 
+                    startIcon={<ThumbUpAltIcon />}
+                    onClick={this.addLike}>Like this photo!</Button>
                 <br></br>
                 <p>{this.props.galleryItem.likes} people like this! </p>
-                <Button variant="outlined" color="secondary" onClick={this.deletePhoto}> Delete</Button>
+                <Button 
+                    variant="outlined" 
+                    color="secondary" 
+                    onClick={this.deletePhoto}> Delete</Button>
             </div>
         ) // end return
     } // end render

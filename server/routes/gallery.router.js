@@ -51,4 +51,20 @@ router.get('/', (req, res) => {
         });
 });
 
+//DELETE ROUTE for individual item
+router.delete('/:id', (req, res) => {
+    let galleryId = req.params.id;
+    console.log('Delete request for id', galleryId);
+    let sqlText = 'DELETE FROM gallery WHERE id=$1;';
+    pool.query(sqlText, [galleryId])
+        .then((result) => {
+            console.log('Photo deleted');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

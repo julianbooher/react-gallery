@@ -18,11 +18,23 @@ class GalleryItem extends Component{
         .then (response => {
             this.props.getGalleryItems();
         })
+        .catch((error) => {
+            alert('Something bad happened');
+            console.log('Error', error)
+          })
     }
 
-    // function to add a like
+    // function to delete a photo
     deletePhoto = () => {
         console.log('in deletePhoto')
+        axios.delete(`/gallery/${this.props.galleryItem.id}`)
+        .then (response => {
+            this.props.getGalleryItems();
+        })
+        .catch((error) => {
+            alert('Something bad happened');
+            console.log('Error', error)
+          })
     }
 
     // Function to toggle selected status. Will add faded image class, display text as conditional rendering components in the jsx.

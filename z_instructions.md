@@ -10,3 +10,5 @@
     [] function to change state "selected"
         [] put function inside div as onclick
     [] conditional rendering on the div, text box pops up with description over the image when it is clicked and toggled.
+
+IMGUR LINK FOR PHOTO ALBUM: https://imgur.com/a/MpktVxH
